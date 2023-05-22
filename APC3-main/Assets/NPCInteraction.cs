@@ -18,6 +18,8 @@ public class NPCInteraction : MonoBehaviour
         if (isInteractable && Input.GetKeyDown(KeyCode.E)&&contact)
         {
             ActivateInteraction();
+            Cursor.visible=true;
+            Cursor.lockState=CursorLockMode.Confined;
         }
 
         if (isInteractable && Input.GetKeyDown(KeyCode.E)&& !contact)
@@ -57,6 +59,7 @@ public class NPCInteraction : MonoBehaviour
         anodl.enabled=false;
         inputField.Select();
        
+        
         // 여기에 추가적인 상호작용 로직을 구현할 수 있습니다.
     }
 }
