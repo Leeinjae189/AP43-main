@@ -13262,6 +13262,7 @@ GameObject:
   - component: {fileID: 1658434587}
   - component: {fileID: 1658434593}
   - component: {fileID: 1658434594}
+  - component: {fileID: 1658434595}
   m_Layer: 0
   m_Name: NPC Jeff
   m_TagString: Untagged
@@ -13292,7 +13293,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 2, z: 0.8}
+  m_Size: {x: 0.73, y: 2, z: 1.04}
   m_Center: {x: 0, y: 0, z: 0.09}
 --- !u!23 &1658434589
 MeshRenderer:
@@ -13374,6 +13375,8 @@ MonoBehaviour:
   textField: {fileID: 1421440386}
   inputField: {fileID: 511594650}
   okButton: {fileID: 2086097662}
+  frompots: {fileID: 1658434595}
+  npcvalue: 2
 --- !u!114 &1658434594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13391,8 +13394,21 @@ MonoBehaviour:
   anodl: {fileID: 1400042831}
   inputField: {fileID: 511594650}
   Canvas: {fileID: 62492723}
-  button: {fileID: 2086097660}
-  Main: {fileID: 1400042828}
+--- !u!114 &1658434595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658434586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4df1a20459041a46ac0ddb5d4d3b3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcprompot:
+  - 
+  npcname: []
 --- !u!1 &1670535301
 GameObject:
   m_ObjectHideFlags: 0
@@ -14739,66 +14755,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
   m_PrefabInstance: {fileID: 1175488751}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1830458287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830458282}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 963194228}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 1
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!114 &1830458292
 MonoBehaviour:
   m_ObjectHideFlags: 0
