@@ -13,24 +13,28 @@ public class OpenAIController : MonoBehaviour
     public TMP_Text textField;
     public TMP_InputField inputField;
     public Button okButton;
-    
+    public GameObject bottle;
+
+    public GameObject briefcase;
+
+    public GameObject clipboard;
     private OpenAIAPI api;
     private List<ChatMessage> messages;
     public NPCFrompot frompots;
     public int npcvalue;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         // This line gets your API key (and could be slightly different on Mac/Linux)
         api = new OpenAIAPI(Environment.GetEnvironmentVariable("OPENAI_API_KEY", EnvironmentVariableTarget.User));
         StartConversation();
         okButton.onClick.AddListener(() => GetResponse());
-        frompots=FindObjectOfType<NPCFrompot>();
-         if (frompots != null)
+        frompots = FindObjectOfType<NPCFrompot>();
+        if (frompots != null)
         {
-            frompots.InitNPCPrompot();
-            StartConversation();
-            okButton.onClick.AddListener(() => GetResponse());
+        frompots.InitNPCPrompot();
+        StartConversation();
+        okButton.onClick.AddListener(() => GetResponse());
         }
     }
 
@@ -64,13 +68,13 @@ public class OpenAIController : MonoBehaviour
         ChatMessage userMessage = new ChatMessage();
         userMessage.Role = ChatMessageRole.User;
         userMessage.Content = inputField.text;
-        if (userMessage.Content.Length > 150)
+        if (userMessage.Content.Length > 200)
         {
             // Limit messages to 100 characters
-            userMessage.Content = userMessage.Content.Substring(0, 150);
+            userMessage.Content = userMessage.Content.Substring(0, 200);
         }
         Debug.Log(string.Format("{0}: {1}", userMessage.rawRole, userMessage.Content));
-
+        
         // Add the message to the list
         messages.Add(userMessage);
 
@@ -97,11 +101,31 @@ public class OpenAIController : MonoBehaviour
 
         // Add the response to the list of messages
         messages.Add(responseMessage);
-
+        
+        // Trigger the desired action
+        TriggerAction(responseMessage.Content);
+    
         // Update the text field with the response
         textField.text = string.Format("You: {0}\n\n홍길동: {1}", userMessage.Content, responseMessage.Content);
 
         // Re-enable the OK button
         okButton.enabled = true;
     }
+
+    private void TriggerAction(string responseMessage)
+    {
+        Debug.Log("Response Content: " + responseMessage);
+
+    Item[] items = FindObjectsOfType<Item>();
+    if(responseMessage.Contains("좋은")&&npcvalue==1){
+        briefcase.SetActive(true);
+        }
+     if(responseMessage.Contains("근력")&&npcvalue==3){
+        bottle.SetActive(true);
+        }
+     if(responseMessage.Contains("골다공증")&&npcvalue==4){
+        clipboard.SetActive(true);
+        }
+    }
+        
 }

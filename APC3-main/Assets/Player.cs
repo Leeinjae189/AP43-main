@@ -7,6 +7,13 @@ public class Player : MonoBehaviour
     bool iDown;
     public GameObject[] items;
     public bool[] hasItems;
+  
+    public NPCFrompot npcA;
+    public NPCFrompot npcB;
+
+    public NPCFrompot npcC;
+
+    public NPCFrompot npcD;
 
     void GetInput()
     {
@@ -16,14 +23,14 @@ public class Player : MonoBehaviour
     GameObject nearObject;
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Items")
+       if (other.CompareTag("Items"))
             nearObject = other.gameObject;
        
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Items")
+        if (other.CompareTag("Items"))
             nearObject = null;
     }
 
@@ -44,13 +51,18 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) && nearObject != null)
         {
             Debug.Log("checked");
-            if (nearObject.tag == "Items")
+            if (nearObject.CompareTag("Items"))
             {
-                Item item = nearObject.GetComponent<Item>();
+                 Item item = nearObject.GetComponent<Item>();
+                 if(item.value==2){
+                    npcA.npcprompot[1]=npcA.npcwithevidence[0];
+                 }
+
                 int itemIndex = item.value;
                 hasItems[itemIndex] = true;
                 Debug.Log("checked");
                 Destroy(nearObject);
+
             }
         }
     }

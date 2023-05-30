@@ -12,6 +12,7 @@ public class NPCFrompot : MonoBehaviour
 {
     public String[] npcprompot;
     public String[] npcname;
+    public String[] npcwithevidence;
     void Start()
     {
     InitNPCPrompot();
@@ -33,6 +34,11 @@ public class NPCFrompot : MonoBehaviour
         "이훈이",
         "봉미선",
         "박철수"
+       };
+       npcwithevidence=new string[]
+       {
+            "h."
+        
        };
        
     }

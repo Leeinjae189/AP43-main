@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     // Start is called before the first frame update
-    public enum Type { briefcase, hammer, bat};
+    public enum Type {bottle, clipboard, briefcase };
     public Type type;
     public int value;
     void Start()
@@ -16,6 +16,6 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * 20 * Time.deltaTime);
+        
     }
 }
