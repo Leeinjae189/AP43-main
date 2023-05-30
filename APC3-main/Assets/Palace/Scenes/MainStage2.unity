@@ -12365,7 +12365,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   hasItems: 000000
-  npc: {fileID: 0}
+  npcA: {fileID: 753380386}
+  npcB: {fileID: 1658434595}
+  npcC: {fileID: 891158045}
+  npcD: {fileID: 1344817291}
 --- !u!1 &1402080476
 GameObject:
   m_ObjectHideFlags: 0
