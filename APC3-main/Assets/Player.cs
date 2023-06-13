@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
+    public float delay = 5f;
     bool iDown;
     public GameObject[] items;
     public bool[] hasItems;
-  
+    public int[] eviActive= new int[5];
     public NPCFrompot npcA;
     public NPCFrompot npcB;
 
     public NPCFrompot npcC;
 
     public NPCFrompot npcD;
+     public TMP_Text mesh;
 
     void GetInput()
     {
@@ -37,7 +40,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       for (int i = 0; i < eviActive.Length; i++)
+        {
+            eviActive[i] = 0;
+        }   
     }
 
     // Update is called once per frame
@@ -48,15 +54,26 @@ public class Player : MonoBehaviour
 
     void Interaction()
     {
+         
+      
         if(Input.GetKeyDown(KeyCode.E) && nearObject != null)
         {
-            Debug.Log("checked");
+            
             if (nearObject.CompareTag("Items"))
             {
                  Item item = nearObject.GetComponent<Item>();
-                 if(item.value==2){
-                    npcA.npcprompot[1]=npcA.npcwithevidence[0];
+                 if(item.value==0){
+                    if(mesh.enabled==false) mesh.enabled=true;
+                    npcC.npcprompot[3]=npcC.npcwithevidence[2];
+                    eviActive[0]=1;
+                    mesh.text=npcC.gotoNpc[2];
+                    Invoke("HideText", delay);
+                    }
+                 else if(item.value==1){
+                    hasItems[1]=true;
+
                  }
+
 
                 int itemIndex = item.value;
                 hasItems[itemIndex] = true;
@@ -65,5 +82,9 @@ public class Player : MonoBehaviour
 
             }
         }
+    }
+    private void HideText()
+    {
+       mesh.enabled = false; // Text 요소를 비활성화하여 숨김
     }
 }
